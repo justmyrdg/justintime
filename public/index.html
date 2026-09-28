@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jas in Time</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><g transform='translate(4 4)' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='5' width='20' height='14' rx='2'/><circle cx='9' cy='11' r='2'/><path d='M6.17 15a3 3 0 0 1 5.66 0M16 10h2M16 14h2'/></g></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ===== Icon sprite (flat line icons) ===== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-folder-open" viewBox="0 0 24 24"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></symbol>
+    <symbol id="i-highlighter" viewBox="0 0 24 24"><path d="m9 11-6 6v3h9l3-3"/><path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/></symbol>
+    <symbol id="i-eraser" viewBox="0 0 24 24"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></symbol>
+    <symbol id="i-redo" viewBox="0 0 24 24"><path d="m15 14 5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M10 11v6"/><path d="M14 11v6"/></symbol>
+    <symbol id="i-zoom-in" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></symbol>
+    <symbol id="i-zoom-out" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M8 11h6"/></symbol>
+    <symbol id="i-fit" viewBox="0 0 24 24"><path d="M3 4v16"/><path d="M21 4v16"/><path d="M7 12h10"/><path d="m10 9-3 3 3 3"/><path d="m14 9 3 3-3 3"/></symbol>
+    <symbol id="i-chevron-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-id-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6.17 15a3 3 0 0 1 5.66 0"/><path d="M16 10h2"/><path d="M16 14h2"/></symbol>
+    <symbol id="i-file-text" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
+    <symbol id="i-grip" viewBox="0 0 24 24"><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="i-maximize" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="m21 3-7 7"/><path d="m3 21 7-7"/></symbol>
+    <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="m18 14 4 4-4 4"/><path d="m18 2 4 4-4 4"/><path d="M2 18h2a4 4 0 0 0 3.3-1.7l5.4-7.6A4 4 0 0 1 16 7h6"/><path d="M2 6h2a4 4 0 0 1 3.6 2.2"/><path d="M22 18h-6a4 4 0 0 1-3.3-1.8l-.4-.5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-user-plus" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></symbol>
+    <symbol id="i-calendar-check" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></symbol>
+    <symbol id="i-check-all" viewBox="0 0 24 24"><path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></symbol>
+    <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-laser" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3"/><path d="M12 19v3"/><path d="M2 12h3"/><path d="M19 12h3"/><path d="m4.9 4.9 2.1 2.1"/><path d="m17 17 2.1 2.1"/><path d="m4.9 19.1 2.1-2.1"/><path d="m17 7 2.1-2.1"/></symbol>
+    <symbol id="i-line" viewBox="0 0 24 24"><path d="M5 19 19 5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 19 19 5"/><path d="M9 5h10v10"/></symbol>
+    <symbol id="i-square" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="1.5"/></symbol>
+    <symbol id="i-type" viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></symbol>
+    <symbol id="i-sidebar" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></symbol>
+    <symbol id="i-file-plus" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 12v6"/><path d="M9 15h6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+    <symbol id="i-present" viewBox="0 0 24 24"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></symbol>
+  </svg>
+
+  <!-- ===== Toolbar ===== -->
+  <header class="toolbar">
+    <div class="brand-block" title="Jas in Time">
+      <div class="brand-mark"><svg class="i"><use href="#i-id-card"/></svg></div>
+      <div class="brand-text">
+        <span class="brand-name">Jas in Time</span>
+        <span id="docName" class="doc-name">No PDF open</span>
+      </div>
+    </div>
+    <button class="btn icon outline" id="thumbsToggle" title="Page thumbnails (S)" aria-label="Page thumbnails"><svg class="i"><use href="#i-sidebar"/></svg></button>
+    <label class="btn primary" title="Open a PDF (or drag one onto the page)">
+      <svg class="i"><use href="#i-folder-open"/></svg><span>Open PDF</span>
+      <input id="fileInput" type="file" accept="application/pdf,.pdf" hidden>
+    </label>
+    <div class="menu-wrap">
+      <button class="btn icon outline" id="recentBtn" title="Recently opened PDFs" aria-label="Recent PDFs"><svg class="i"><use href="#i-history"/></svg></button>
+      <div id="recentMenu" class="menu hidden"></div>
+    </div>
+
+    <div class="group">
+      <button class="btn icon tool active" data-tool="hand" title="Scroll / select (V)" aria-label="Scroll"><svg class="i"><use href="#i-hand"/></svg></button>
+      <button class="btn icon tool" data-tool="pen" title="Pen (P)" aria-label="Pen"><svg class="i"><use href="#i-pen"/></svg></button>
+      <button class="btn icon tool" data-tool="highlighter" title="Highlighter (H)" aria-label="Highlighter"><svg class="i"><use href="#i-highlighter"/></svg></button>
+      <button class="btn icon tool" data-tool="laser" title="Laser pointer (L)" aria-label="Laser pointer"><svg class="i"><use href="#i-laser"/></svg></button>
+      <button class="btn icon tool" data-tool="eraser" title="Eraser (E)" aria-label="Eraser"><svg class="i"><use href="#i-eraser"/></svg></button>
+    </div>
+
+    <div class="group">
+      <button class="btn icon tool" data-tool="line" title="Line (I) — hold Shift to snap angles" aria-label="Line"><svg class="i"><use href="#i-line"/></svg></button>
+      <button class="btn icon tool" data-tool="arrow" title="Arrow (A) — hold Shift to snap angles" aria-label="Arrow"><svg class="i"><use href="#i-arrow"/></svg></button>
+      <button class="btn icon tool" data-tool="rect" title="Rectangle (B) — hold Shift for a square" aria-label="Rectangle"><svg class="i"><use href="#i-square"/></svg></button>
+      <button class="btn icon tool" data-tool="text" title="Text (T) — click to type, click text to edit" aria-label="Text"><svg class="i"><use href="#i-type"/></svg></button>
+    </div>
+
+    <div class="group colors" id="colors">
+      <button class="swatch active" data-color="#111111" style="--c:#111111" title="Black"></button>
+      <button class="swatch" data-color="#e53935" style="--c:#e53935" title="Red"></button>
+      <button class="swatch" data-color="#1e88e5" style="--c:#1e88e5" title="Blue"></button>
+      <button class="swatch" data-color="#43a047" style="--c:#43a047" title="Green"></button>
+      <button class="swatch" data-color="#fdd835" style="--c:#fdd835" title="Yellow"></button>
+      <button class="swatch" data-color="#8e24aa" style="--c:#8e24aa" title="Purple"></button>
+      <input id="customColor" type="color" value="#ff6f00" title="Custom color">
+    </div>
+
+    <div class="group">
+      <label class="size-label" title="Pen size">
+        Size <input id="sizeInput" type="range" min="1" max="20" value="3">
+      </label>
+    </div>
+
+    <div class="group">
+      <button class="btn icon" id="undoBtn" title="Undo (Ctrl+Z)" aria-label="Undo"><svg class="i"><use href="#i-undo"/></svg></button>
+      <button class="btn icon" id="redoBtn" title="Redo (Ctrl+Y)" aria-label="Redo"><svg class="i"><use href="#i-redo"/></svg></button>
+      <button class="btn icon" id="clearPageBtn" title="Clear ink on current page" aria-label="Clear page"><svg class="i"><use href="#i-trash"/></svg></button>
+    </div>
+
+    <div class="group">
+      <button class="btn icon" id="zoomOut" title="Zoom out (Ctrl+scroll)" aria-label="Zoom out"><svg class="i"><use href="#i-zoom-out"/></svg></button>
+      <span id="zoomLabel" class="zoom-label">100%</span>
+      <button class="btn icon" id="zoomIn" title="Zoom in (Ctrl+scroll)" aria-label="Zoom in"><svg class="i"><use href="#i-zoom-in"/></svg></button>
+      <button class="btn icon" id="fitWidth" title="Fit width" aria-label="Fit width"><svg class="i"><use href="#i-fit"/></svg></button>
+    </div>
+
+    <div class="group">
+      <button class="btn icon" id="prevPage" title="Previous page" aria-label="Previous page"><svg class="i"><use href="#i-chevron-up"/></svg></button>
+      <input id="pageInput" type="number" min="1" value="1">
+      <span id="pageCount" class="page-count">/ 0</span>
+      <button class="btn icon" id="nextPage" title="Next page" aria-label="Next page"><svg class="i"><use href="#i-chevron-down"/></svg></button>
+      <button class="btn icon" id="addBlank" title="Insert a blank whiteboard page after this one (N)" aria-label="Insert blank page"><svg class="i"><use href="#i-file-plus"/></svg></button>
+    </div>
+
+    <button class="btn outline push-right" id="exportBtn" title="Download the PDF with your annotations"><svg class="i"><use href="#i-download"/></svg><span>Export</span></button>
+    <button class="btn outline" id="presentBtn" title="Presentation mode (F) — Esc to exit"><svg class="i"><use href="#i-present"/></svg><span>Present</span></button>
+    <button class="btn outline" id="toggleCard" title="Show / hide index card (C)"><svg class="i"><use href="#i-id-card"/></svg><span>Card</span></button>
+  </header>
+
+  <!-- ===== Page thumbnails ===== -->
+  <aside id="thumbs" class="thumbs hidden"></aside>
+
+  <!-- ===== PDF area ===== -->
+  <main id="viewer" class="viewer">
+    <div id="emptyState" class="empty-state">
+      <div class="empty-icon"><svg class="i"><use href="#i-file-text"/></svg></div>
+      <h1 class="brand">Jas in Time</h1>
+      <h2>No document open</h2>
+      <p>Click <b>Open PDF</b> or drop a file anywhere on the page.</p>
+      <div id="recentEmpty" class="recent-empty"></div>
+      <p class="hint">
+        <span><kbd>P</kbd> Pen</span><span><kbd>H</kbd> Highlighter</span><span><kbd>L</kbd> Laser</span>
+        <span><kbd>T</kbd> Text</span><span><kbd>A</kbd> Arrow</span><span><kbd>B</kbd> Box</span>
+        <span><kbd>E</kbd> Eraser</span><span><kbd>V</kbd> Scroll</span><span><kbd>F</kbd> Present</span>
+      </p>
+    </div>
+    <div id="pages" class="pages"></div>
+  </main>
+
+  <canvas id="laserCanvas" class="laser-canvas"></canvas>
+
+  <!-- ===== Presentation dock ===== -->
+  <div id="presentDock" class="present-dock">
+    <button class="btn icon" id="dockPrev" title="Previous page (PageUp)" aria-label="Previous page"><svg class="i"><use href="#i-chevron-left"/></svg></button>
+    <span id="dockPage" class="dock-page">1 / 1</span>
+    <button class="btn icon" id="dockNext" title="Next page (PageDown / Space)" aria-label="Next page"><svg class="i"><use href="#i-chevron-right"/></svg></button>
+    <span class="dock-sep"></span>
+    <button class="btn icon tool" data-tool="hand" title="Scroll (V)" aria-label="Scroll"><svg class="i"><use href="#i-hand"/></svg></button>
+    <button class="btn icon tool" data-tool="pen" title="Pen (P)" aria-label="Pen"><svg class="i"><use href="#i-pen"/></svg></button>
+    <button class="btn icon tool" data-tool="highlighter" title="Highlighter (H)" aria-label="Highlighter"><svg class="i"><use href="#i-highlighter"/></svg></button>
+    <button class="btn icon tool" data-tool="laser" title="Laser pointer (L)" aria-label="Laser pointer"><svg class="i"><use href="#i-laser"/></svg></button>
+    <button class="btn icon tool" data-tool="eraser" title="Eraser (E)" aria-label="Eraser"><svg class="i"><use href="#i-eraser"/></svg></button>
+    <button class="btn icon" id="dockUndo" title="Undo (Ctrl+Z)" aria-label="Undo"><svg class="i"><use href="#i-undo"/></svg></button>
+    <button class="btn icon" id="dockBlank" title="Insert blank page (N)" aria-label="Insert blank page"><svg class="i"><use href="#i-file-plus"/></svg></button>
+    <span class="dock-sep"></span>
+    <button class="btn icon" id="dockExit" title="Exit presentation (Esc)" aria-label="Exit presentation"><svg class="i"><use href="#i-x"/></svg></button>
+  </div>
+
+  <!-- ===== Index card widget ===== -->
+  <section id="card" class="card">
+    <div class="card-head" id="cardHead">
+      <svg class="i grip"><use href="#i-grip"/></svg>
+      <select id="classSelect" class="class-select" title="Choose class (section + subject)"></select>
+      <span id="cardCounter" class="card-counter">0 / 0</span>
+      <button class="icon-btn" id="cardMin" title="Minimize" aria-label="Minimize"><svg class="i"><use href="#i-minus"/></svg></button>
+    </div>
+    <div class="card-body" id="cardBody">
+      <div class="card-main">
+        <div id="studentName" class="student-name" title="Click to see the class list">No students yet</div>
+        <div id="studentCode" class="student-code"></div>
+
+        <div class="points-row">
+          <div class="points-display">
+            <span class="points-label">Points</span>
+            <span id="pointsValue" class="points-value">0</span><span class="points-max">/ 30</span>
+          </div>
+          <button class="pt-btn plus" id="plusBtn" title="+1 point (↑)"><svg class="i"><use href="#i-plus"/></svg>1</button>
+        </div>
+
+        <div id="dots" class="dots" aria-hidden="true"></div>
+
+        <div class="att-row" id="attRow">
+          <span class="att-label" id="attRowLabel">Today</span>
+          <div class="att-btns" id="attCurrent"></div>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn icon" id="prevStudent" title="Previous student (←)" aria-label="Previous student"><svg class="i"><use href="#i-chevron-left"/></svg></button>
+          <button class="btn primary" id="randomStudent" title="Pick a random student (R)"><svg class="i"><use href="#i-shuffle"/></svg><span>Random</span></button>
+          <button class="btn icon" id="nextStudent" title="Next student (→)" aria-label="Next student"><svg class="i"><use href="#i-chevron-right"/></svg></button>
+        </div>
+      </div>
+
+      <button class="list-toggle" id="listToggle">
+        <svg class="i"><use href="#i-users"/></svg><span>Class list</span><svg class="i chev"><use href="#i-chevron-down"/></svg>
+      </button>
+      <div id="listPanel" class="list-panel hidden">
+        <form id="addForm" class="add-form">
+          <input id="addName" type="text" placeholder="Add student name" autocomplete="off">
+          <button class="btn primary" type="submit"><svg class="i"><use href="#i-user-plus"/></svg><span>Add</span></button>
+        </form>
+        <ul id="studentList" class="student-list"></ul>
+        <div class="list-footer">
+          <select id="sortSelect" title="Sort list">
+            <option value="csv">CSV order</option>
+            <option value="name">Name A–Z</option>
+            <option value="points">Points high–low</option>
+          </select>
+          <button class="btn danger" id="resetAll" title="Set every student to 0 points"><svg class="i"><use href="#i-rotate"/></svg><span>Reset points</span></button>
+        </div>
+      </div>
+      <button class="list-toggle" id="attToggle">
+        <svg class="i"><use href="#i-calendar-check"/></svg><span>Attendance</span><svg class="i chev"><use href="#i-chevron-down"/></svg>
+      </button>
+      <div id="attPanel" class="list-panel hidden">
+        <div class="att-head">
+          <button class="btn icon" id="attPrevDay" title="Previous day" aria-label="Previous day"><svg class="i"><use href="#i-chevron-left"/></svg></button>
+          <input type="date" id="attDate" title="Attendance date">
+          <button class="btn icon" id="attNextDay" title="Next day" aria-label="Next day"><svg class="i"><use href="#i-chevron-right"/></svg></button>
+          <button class="btn" id="attToday" title="Go to today"><svg class="i"><use href="#i-calendar"/></svg><span>Today</span></button>
+        </div>
+        <div class="att-summary" id="attSummary"></div>
+        <ul id="attList" class="student-list att-list"></ul>
+        <div class="list-footer">
+          <button class="btn primary" id="attAllPresent" title="Mark everyone who isn't marked yet as Present"><svg class="i"><use href="#i-check-all"/></svg><span>Mark rest present</span></button>
+          <span class="att-legend">P present · L late · A absent · E excused</span>
+        </div>
+      </div>
+      <div id="cardStatus" class="card-status"></div>
+    </div>
+  </section>
+
+  <div id="dropOverlay" class="drop-overlay hidden">
+    <div class="drop-box"><svg class="i"><use href="#i-upload"/></svg><span>Drop PDF to open</span></div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

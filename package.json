@@ -1,0 +1,14 @@
+{
+  "name": "index-card",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jas in Time — PDF viewer with pen annotations and a student index card with points",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.10.38"
+  }
+}
